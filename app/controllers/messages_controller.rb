@@ -34,6 +34,14 @@ class MessagesController < ApplicationController
       render 'edit'
     end
   end
-
+  
+  private
+  def message_params
+    params.require(:message).permit(:name, :body)
+  end
+  
+  def set_message
+    @message = Message.find(params[:id])
+  end
   
 end
